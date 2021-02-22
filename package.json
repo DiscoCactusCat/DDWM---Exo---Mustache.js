@@ -1,0 +1,17 @@
+{
+  "name": "exomustache",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Caroline Roy",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.6.0",
+    "jquery": "^3.5.1",
+    "mustache": "^4.1.0",
+    "node-sass": "^5.0.0"
+  }
+}

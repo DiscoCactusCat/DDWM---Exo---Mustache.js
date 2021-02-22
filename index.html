@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>The Good Place | Personnages</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row" id="actions"><button type="button" id="card-button" class="btn btn-secondary">Show cards</div>
+        <div class="row" id="cards"></div>
+    </div>
+
+    <!-- Dépendances JQUERY BOOTSTRAP -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script></script>
+
+    <!-- Dépendance Mustache JS -->
+    <script src="node_modules/mustache/mustache.min.js"></script>
+    
+    <!-- Mustache templates -->
+    <script id="card-template" type="x-tmpl-mustache">
+        <div class="col-12 col col-md-4 col-lg-3">
+            <div class="card">
+                <img src={{imgSrc}} alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{name}}</h5>
+                    <p class="card-text">{{text}}</p>
+                    <a href="{{url}}" target="_blank" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    </script>
+
+
+    <script>
+        var counter = 0;
+        var datas = [
+            {
+                name: "Eleanor",
+                text: "Un texte sur Eleanor",
+                url: "https://github.com/janl/mustache.js/blob/master/mustache.js",
+                imgSrc: "https://fr.web.img5.acsta.net/r_1280_720/newsv7/18/09/27/17/47/24206410.jpg"
+            },
+            {
+                name: "Janet",
+                text: "Un texte sur Janet",
+                url: "https://github.com/janl/mustache.js/blob/master/mustache.js",
+                imgSrc: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/season-3-pictured-darcy-carden-as-janet-news-photo-1025114988-1560194722.jpg"
+            },
+            {
+                name: "Tahani",
+                text: "Un texte sur Tahani",
+                url: "https://github.com/janl/mustache.js/blob/master/mustache.js",
+                imgSrc: "https://d.newsweek.com/en/full/1246034/nup-183230-0641.jpg"
+            }
+
+        ];
+
+        $("#card-button").click(function () {
+
+            for (var index = 0; index < datas.length; index++) {
+                var template = $('#card-template').html();
+
+                Mustache.parse(template);
+                // Donnée de la carte n° index
+                var data = datas[index];
+
+                // génération du HTML
+                var rendered = Mustache.render(template, data);
+
+                // Insertion du résultat dans la section d'id #cards
+                $('#cards').append(rendered);
+            };
+        })
+    </script>
+
+</body>
+
+</html>
